@@ -2,7 +2,7 @@
 //  typealiases.swift
 //  OnlineClothingShop
 //
-//  Created by Akindu Bogahawatta on 2024-03-23.
+//  Created by Lahiru Sandaruwan on 2024-03-23.
 //
 
-import Foundation
+typealias ButtonAction = () -> Void

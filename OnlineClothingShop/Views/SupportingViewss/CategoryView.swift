@@ -8,8 +8,23 @@
 import SwiftUI
 
 struct CategoryView: View {
+    var isSelected: Bool = false
+    var title: String = "All"
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            Text(title)
+                .font(Font.custom("Tenor Sans", size: 16))
+                .multilineTextAlignment(.center)
+                .foregroundColor(isSelected ? Color.Default : Color.Placehoder.opacity(0.5))
+            
+            if isSelected{
+                Rectangle()
+                    .foregroundColor(Color.Default)
+                    .frame(width: 5, height: 5)
+                    .rotationEffect(Angle(degrees: 45))
+            }
+        }
     }
 }
 
