@@ -11,6 +11,7 @@ struct HomeView: View {
     
     @State var presentSideMenu = false
     @State var presentSideCart = false
+    @State private var search = ""
     
     private var categories = [Categories.All.rawValue, Categories.Apparel.rawValue, Categories.Dress.rawValue, Categories.TShirt.rawValue, Categories.Bag.rawValue]
     @State private var selectedCategory: Int = 0
@@ -22,6 +23,22 @@ struct HomeView: View {
                 Color.white.edgesIgnoringSafeArea(.all)
                 ZStack {
                     VStack(spacing: 0) {
+                        HStack {
+                            TextField("Search Products ...", text: $search)
+                                .padding()
+                                .frame(width: 300)
+                                .background(Color.black.opacity(0.05))
+                                .cornerRadius(10)
+                                
+                                Image("Search")
+                                .resizable()
+                                .padding(.all, 10)
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 50, height: 50)
+                                .background(Color.Line)
+                        }
+                        .padding()
+                        .edgesIgnoringSafeArea(.all)
                         ScrollView(.vertical) {
                             HeroImageView()
                             NewArrivalView()
@@ -33,9 +50,49 @@ struct HomeView: View {
                             FooterView()
                             Spacer()
                         }
-                        .edgesIgnoringSafeArea(.all)
+                        HStack {
+                            Image("shopping bag")
+                                .resizable()
+                                .padding(.all, 10)
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 50, height: 50)
+                                .background(Color.Line)
+                                .padding()
+                                
+//                                Spacer()
+                            Image("grid view")
+                                .resizable()
+                                .padding(.all, 10)
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 50, height: 50)
+                                .background(Color.Line)
+                                .padding()
+                            
+//                                Spacer()
+                            Image("Search")
+                                .resizable()
+                                .padding(.all, 10)
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 50, height: 50)
+                                .background(Color.Line)
+                                .padding()
+                            
+//                                Spacer()
+                            Image("Search")
+                                .resizable()
+                                .padding(.all, 10)
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 50, height: 50)
+                                .background(Color.Line)
+                                .padding()
+                                
+                        }
+//                        .padding()
+                        
+                       
                     }
                     .padding(.top, 56)
+                   
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .overlay(alignment: .top) {

@@ -8,10 +8,18 @@
 import SwiftUI
 
 struct SigninView: View {
-    @State private var firstname = ""
-    @State private var lastname = ""
-    @State private var email = ""
-    @State private var password = ""
+    @EnvironmentObject var userViewModel: UserViewModel
+    @State var firstname = ""
+    @State var lastname = ""
+    @State var email = ""
+    @State var password = ""
+    @State var isAleart = false
+    
+//    @Binding var isPresented: Bool
+//    @Binding var firstname: String
+//    @Binding var lastname: String
+//    @Binding var email: String
+//    @Binding var password: String
 //    @State private var wrongPassword = 0
 //    @State private var showingLoginScreen = false
     
@@ -55,15 +63,36 @@ struct SigninView: View {
                     .cornerRadius(10)
 //                    .border(Color.Dark.opacity(0.8), width: CGFloat(wrongPassword))
                 
-                    NavigationLink(destination: LoginView()) {
-                        Text("Confirm")
-                            .font(tenorSans(20))
-                            .bold()
-                            .foregroundColor(.white)
-                            .frame(width: 300, height: 50)
-                            .background(Color.Dark.opacity(0.7))
-                            .cornerRadius(10)
-                }
+//                    NavigationLink(destination: LoginView()) {
+//                        Text("Confirm")
+//                            .font(tenorSans(20))
+//                            .bold()
+//                            .foregroundColor(.white)
+//                            .frame(width: 300, height: 50)
+//                            .background(Color.Dark.opacity(0.7))
+//                            .cornerRadius(10)
+//                        }
+                    .alert(isPresented: $isAleart, content: {
+                        let firstname = Text("No data")
+                        let message = Text("Please fill all fields!")
+                        return Alert(title: firstname, message: message)
+                    })
+                Button(action: {
+                    if firstname != "" && lastname != "" {
+                        let parameters: [String: Any] = ["firstName": firstname, "lastName": lastname]
+                        userViewModel.createUser(parameters: parameters)
+                    } else {
+                        isAleart.toggle()
+                    }
+                }, label: {
+                    Text("Confirm")
+                        .font(tenorSans(20))
+                        .bold()
+                        .foregroundColor(.white)
+                        .frame(width: 300, height: 50)
+                        .background(Color.Dark.opacity(0.7))
+                        .cornerRadius(10)
+                })
                     Image("Divider")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -80,7 +109,7 @@ struct SigninView: View {
                             .bold()
                     }
                 }
-                }
+            }
         }
         
     }
