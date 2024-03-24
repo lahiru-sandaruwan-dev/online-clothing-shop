@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CartItem {
+class CartItemModel {
     var product: ProductModel
     var count: Int = 0
     

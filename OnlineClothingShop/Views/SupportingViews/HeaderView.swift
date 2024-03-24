@@ -24,10 +24,17 @@ struct HeaderView: View {
                 .frame(width: 24 , height: 24)
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
                 
-                Image("Logo")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 84 , height: 84)
+//                Image("Logo")
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fit)
+//                    .frame(width: 84 , height: 84)
+                
+                NavigationLink(destination: HomeView()) {
+                                   Image("Logo") // Assuming "Logo" is the name of your image asset in your asset catalog
+                                       .resizable()
+                                       .aspectRatio(contentMode: .fit)
+                                       .frame(width: 84, height: 84)
+                               }
                 
                 Button {
                     cartAction()
