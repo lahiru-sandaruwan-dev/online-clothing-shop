@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct OnlineClothingShopApp: App {
+//    let userViewModel = UserViewModel()
+        
     var body: some Scene {
         WindowGroup {
-            LandingView()
+            LandingView().environmentObject(UserViewModel())
+                
         }
     }
 }

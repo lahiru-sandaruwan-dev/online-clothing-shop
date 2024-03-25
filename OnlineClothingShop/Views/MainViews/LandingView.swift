@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct LandingView: View {
+    @State var firstname = ""
+    @State var lastname = ""
+    @State var email = ""
+    @State var password = ""
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -32,7 +37,7 @@ struct LandingView: View {
                         .frame(width: 300)
                         .padding(.top, 20)
                     PrimaryButton(title: "Get Started")
-                    NavigationLink(destination: LoginView()) {
+                    NavigationLink(destination: LoginView(firstname: firstname, lastname: lastname, email: email, password: password)) {
                         Text("Login")
                             .font(tenorSans(22))
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -48,7 +53,7 @@ struct LandingView: View {
                     
                     HStack {
                         Text("New around here? ")
-                        NavigationLink(destination: SigninView()) {
+                        NavigationLink(destination: SigninView(firstname: $firstname, lastname: $lastname, email: $email, password: $password)) {
                             Text("Sign In")
                                 .foregroundColor(.Dark)
                         }

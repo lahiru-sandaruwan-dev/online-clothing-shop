@@ -9,17 +9,18 @@ import SwiftUI
 
 struct SigninView: View {
     @EnvironmentObject var userViewModel: UserViewModel
-    @State var firstname = ""
-    @State var lastname = ""
-    @State var email = ""
-    @State var password = ""
+//    @State var firstname = ""
+//    @State var lastname = ""
+//    @State var email = ""
+//    @State var password = ""
     @State var isAleart = false
     
 //    @Binding var isPresented: Bool
-//    @Binding var firstname: String
-//    @Binding var lastname: String
-//    @Binding var email: String
-//    @Binding var password: String
+    @Binding var firstname: String
+    @Binding var lastname: String
+    @Binding var email: String
+    @Binding var password: String
+//    @Binding var role: String
 //    @State private var wrongPassword = 0
 //    @State private var showingLoginScreen = false
     
@@ -79,7 +80,7 @@ struct SigninView: View {
                     })
                 Button(action: {
                     if firstname != "" && lastname != "" {
-                        let parameters: [String: Any] = ["firstName": firstname, "lastName": lastname]
+                        let parameters: [String: Any] = ["firstName": firstname, "lastName": lastname, "email": $email, "password": "123", "role": "user"]
                         userViewModel.createUser(parameters: parameters)
                     } else {
                         isAleart.toggle()
@@ -115,8 +116,8 @@ struct SigninView: View {
     }
 }
 
-struct SigninView_Preview: PreviewProvider {
-    static var previews: some View {
-        SigninView()
-    }
-}
+//struct SigninView_Preview: PreviewProvider {
+//    static var previews: some View {
+//        SigninView()
+//    }
+//}

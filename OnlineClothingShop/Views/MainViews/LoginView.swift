@@ -9,10 +9,15 @@ import SwiftUI
 
 struct LoginView: View {
     @State private var username = ""
-    @State private var password = ""
+    @State private var psw = ""
     @State private var wrongUsername = 0
     @State private var wrongPassword = 0
     @State private var showingLoginScreen = false
+    
+    @State var firstname = ""
+    @State var lastname = ""
+    @State var email = ""
+    @State var password = ""
     
     
     var body: some View {
@@ -35,7 +40,7 @@ struct LoginView: View {
                     .cornerRadius(10)
                     .border(Color.Dark.opacity(0.8), width: CGFloat(wrongUsername))
                 
-                SecureField("Password", text: $password)
+                SecureField("Password", text: $psw)
                     .padding()
                     .frame(width: 300, height: 50)
                     .background(Color.black.opacity(0.05))
@@ -78,7 +83,7 @@ struct LoginView: View {
                 Spacer()
                 HStack {
                     Text("New around here? ")
-                    NavigationLink(destination: SigninView()) {
+                    NavigationLink(destination: SigninView(firstname: $firstname, lastname: $lastname, email: $email, password: $password)) {
                         Text("Sign In")
                             .foregroundColor(Color.Dark)
                             .bold()
@@ -108,11 +113,11 @@ struct LoginView: View {
     }
 }
 
-struct LoginView_Preview: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
-}
+//struct LoginView_Preview: PreviewProvider {
+//    static var previews: some View {
+//        LoginView()
+//    }
+//}
 
 struct SocialLoginButton: View {
     var image: Image
