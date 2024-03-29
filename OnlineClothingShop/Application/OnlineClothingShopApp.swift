@@ -13,7 +13,10 @@ struct OnlineClothingShopApp: App {
         
     var body: some Scene {
         WindowGroup {
-            LandingView().environmentObject(UserViewModel())
+            LandingView()
+                .environmentObject(UserViewModel())
+                .environmentObject(LoginViewModel())
+//                .environmentObject(ProductViewModel())
                 
         }
     }

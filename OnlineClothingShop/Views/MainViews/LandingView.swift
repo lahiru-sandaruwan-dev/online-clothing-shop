@@ -11,7 +11,10 @@ struct LandingView: View {
     @State var firstname = ""
     @State var lastname = ""
     @State var email = ""
+    @State var picture = ""
     @State var password = ""
+    @State var usernames = ""
+    @State var psws = ""
     
     var body: some View {
         NavigationStack {
@@ -37,7 +40,8 @@ struct LandingView: View {
                         .frame(width: 300)
                         .padding(.top, 20)
                     PrimaryButton(title: "Get Started")
-                    NavigationLink(destination: LoginView(firstname: firstname, lastname: lastname, email: email, password: password)) {
+                    
+                    NavigationLink(destination: LoginView(username: $usernames, psw: $psws)) {
                         Text("Login")
                             .font(tenorSans(22))
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -53,7 +57,7 @@ struct LandingView: View {
                     
                     HStack {
                         Text("New around here? ")
-                        NavigationLink(destination: SigninView(firstname: $firstname, lastname: $lastname, email: $email, password: $password)) {
+                        NavigationLink(destination: SigninView(firstname: $firstname, lastname: $lastname, email: $email, picture: $picture, password: $password)) {
                             Text("Sign In")
                                 .foregroundColor(.Dark)
                         }

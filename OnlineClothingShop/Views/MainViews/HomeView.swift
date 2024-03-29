@@ -50,45 +50,7 @@ struct HomeView: View {
                             FooterView()
                             Spacer()
                         }
-                        HStack {
-                            Image("shopping bag")
-                                .resizable()
-                                .padding(.all, 10)
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 50, height: 50)
-                                .background(Color.Line)
-                                .padding()
-                                
-//                                Spacer()
-                            Image("grid view")
-                                .resizable()
-                                .padding(.all, 10)
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 50, height: 50)
-                                .background(Color.Line)
-                                .padding()
-                            
-//                                Spacer()
-                            Image("Search")
-                                .resizable()
-                                .padding(.all, 10)
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 50, height: 50)
-                                .background(Color.Line)
-                                .padding()
-                            
-//                                Spacer()
-                            Image("Search")
-                                .resizable()
-                                .padding(.all, 10)
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 50, height: 50)
-                                .background(Color.Line)
-                                .padding()
-                                
-                        }
-//                        .padding()
-                        
+                        NavigationBarView()
                        
                     }
                     .padding(.top, 56)
@@ -169,14 +131,14 @@ struct HomeView: View {
             }
             .frame(maxWidth: .infinity)
             
-            HStack {
-                ProductItemView(product: product1)
-                ProductItemView(product: product2)
-            }
-            HStack {
-                ProductItemView(product: product3)
-                ProductItemView(product: product4)
-            }
+//            HStack {
+//                ProductItemView(product: product1)
+//                ProductItemView(product: product2)
+//            }
+//            HStack {
+//                ProductItemView(product: product3)
+//                ProductItemView(product: product4)
+//            }
             
             Button {
                 

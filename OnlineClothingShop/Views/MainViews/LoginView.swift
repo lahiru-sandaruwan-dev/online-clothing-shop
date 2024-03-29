@@ -8,17 +8,24 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var username = ""
-    @State private var psw = ""
+    @EnvironmentObject var loginViewModel: LoginViewModel
+    @Binding var username: String
+    @Binding var psw: String
     @State private var wrongUsername = 0
     @State private var wrongPassword = 0
     @State private var showingLoginScreen = false
+    @State private var isAleart = false
+    @State private var showAlert = false
+    @State private var alertMessage: String = ""
+    @State var isLoggedIn = false
     
     @State var firstname = ""
     @State var lastname = ""
     @State var email = ""
+    @State var picture = ""
     @State var password = ""
-    
+   
+    @State private var isHomeViewPresented = false
     
     var body: some View {
         NavigationStack {
@@ -33,19 +40,19 @@ struct LoginView: View {
                     .font(.title)
                     .bold()
                     .padding()
-                TextField("Username", text: $username)
+                TextField("Email", text: $username)
                     .padding()
                     .frame(width: 300, height: 50)
                     .background(Color.black.opacity(0.05))
                     .cornerRadius(10)
-                    .border(Color.Dark.opacity(0.8), width: CGFloat(wrongUsername))
+                    .border(Color.Dark.opacity(0.8), width: 300)
                 
                 SecureField("Password", text: $psw)
                     .padding()
                     .frame(width: 300, height: 50)
                     .background(Color.black.opacity(0.05))
                     .cornerRadius(10)
-                    .border(Color.Dark.opacity(0.8), width: CGFloat(wrongPassword))
+                    .border(Color.Dark.opacity(0.8), width: 300)
                 
 //                Button("Login") {
 //                    authenticateUser(username: username, password: password)
@@ -56,8 +63,45 @@ struct LoginView: View {
 //                .frame(width: 300, height: 50)
 //                .background(Color.Dark.opacity(0.7))
 //                .cornerRadius(10)
-                
-                NavigationLink(destination: HomeView()) {
+                    .alert(isPresented: $isAleart, content: {
+                        let firstname = Text("No data")
+                        let message = Text("Please fill all fields!")
+                        return Alert(title: firstname, message: message)
+                    })
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text("User Creation"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                    }
+//                    .sheet(isPresented: $isHomeViewPresented) {
+//                        HomeView()
+//                    }
+//                
+                Button(action: {
+                    if username != "" && psw != "" {
+                        loginViewModel.login(email: username, password: psw) { result in
+                            switch result {
+                            case .success(let user):
+                                
+                                self.username = ""
+                                self.psw = ""
+                                
+//                                HomeView()
+//                                self.navigateToHomeView()
+                                self.isLoggedIn = true
+                                
+                                print("User Logged successfully: \(user)")
+                                
+                            case .failure(let error):
+                        
+                                self.alertMessage = "Something went wrong! Please check email or password!"
+                                self.showAlert = true
+                                print("Error Logging user: \(error)")
+                            }
+                        }
+                    } else {
+                        isAleart.toggle()
+                    }
+
+                }, label : {
                     Text("LogIn")
                         .font(tenorSans(20))
                         .bold()
@@ -65,7 +109,11 @@ struct LoginView: View {
                         .frame(width: 300, height: 50)
                         .background(Color.Dark.opacity(0.7))
                         .cornerRadius(10)
-            }
+                })
+                
+//                NavigationLink(destination: HomeView()) {
+//                    
+//            }
 //                .padding(.bottom, 40)
                 
                 Image("Divider")
@@ -83,12 +131,16 @@ struct LoginView: View {
                 Spacer()
                 HStack {
                     Text("New around here? ")
-                    NavigationLink(destination: SigninView(firstname: $firstname, lastname: $lastname, email: $email, password: $password)) {
+                    NavigationLink(destination: SigninView(firstname: $firstname, lastname: $lastname, email: $email, picture: $picture, password: $password)) {
                         Text("Sign In")
                             .foregroundColor(Color.Dark)
                             .bold()
                     }
                 }
+                
+                NavigationLink(destination: HomeView(), isActive: $isLoggedIn) {
+                               EmptyView()
+                           }
                 
 //                NavigationLink(destination: Text("You are logged in @\(username)"), isActive: $showingLoginScreen) {
 //                    EmptyView()
@@ -111,6 +163,14 @@ struct LoginView: View {
             wrongUsername = 2
         }
     }
+    
+    func navigateToHomeView() {
+        // Push HomeView onto the navigation stack
+        // Example assuming you're using NavigationView
+//        self.presentationMode.wrappedValue.dismiss()
+        self.isHomeViewPresented = true
+    }
+    
 }
 
 //struct LoginView_Preview: PreviewProvider {
