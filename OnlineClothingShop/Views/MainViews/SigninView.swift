@@ -24,6 +24,8 @@ struct SigninView: View {
     @Binding var email: String
     @Binding var picture: String
     @Binding var password: String
+    @Binding var mobile: String
+    @Binding var address: String
     //    @Binding var role: String
     //    @State private var wrongPassword = 0
     //    @State private var showingLoginScreen = false
@@ -31,10 +33,10 @@ struct SigninView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Image("Logo")
+                Image("logo")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 84, height: 84)
+                    .frame(width: 150, height: 150)
                     .padding(.all, 40)
                 Text("Sign In")
                     .font(.title)
@@ -48,6 +50,20 @@ struct SigninView: View {
                     .border(Color.Dark.opacity(0.8), width: 300)
                 
                 TextField("Last Name", text: $lastname)
+                    .padding()
+                    .frame(width: 300, height: 50)
+                    .background(Color.black.opacity(0.05))
+                    .cornerRadius(10)
+                    .border(Color.Dark.opacity(0.8), width: 300)
+                
+                TextField("Mobile", text: $mobile)
+                    .padding()
+                    .frame(width: 300, height: 50)
+                    .background(Color.black.opacity(0.05))
+                    .cornerRadius(10)
+                    .border(Color.Dark.opacity(0.8), width: 300)
+                
+                TextField("Address", text: $address)
                     .padding()
                     .frame(width: 300, height: 50)
                     .background(Color.black.opacity(0.05))
@@ -78,7 +94,7 @@ struct SigninView: View {
                 Button(action: {
                     if firstname != "" && lastname != "" && email != "" && password != "" {
                         ///                   var password = "password"
-                        userViewModel.createUser(firstname: firstname, lastname: lastname, email: email, picture: "", password: password, role: "user") { result in
+                        userViewModel.createUser(firstname: firstname, lastname: lastname, email: email, picture: "", password: password, role: "user", mobile: mobile, address: address) { result in
                             switch result {
                             case .success(let user):
                                 
@@ -86,6 +102,8 @@ struct SigninView: View {
                                 self.lastname = ""
                                 self.email = ""
                                 self.password = ""
+                                self.mobile = ""
+                                self.address = ""
                                 
                                 self.alertMessage = "User created successfully"
                                 self.showAlert = true

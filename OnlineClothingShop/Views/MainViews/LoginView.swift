@@ -25,6 +25,8 @@ struct LoginView: View {
     @State var email = ""
     @State var picture = ""
     @State var password = ""
+    @State var mobile = ""
+    @State var address = ""
    
     @State private var isHomeViewPresented = false
     
@@ -32,10 +34,10 @@ struct LoginView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Image("Logo")
+                Image("logo")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 84, height: 84)
+                    .frame(width: 150, height: 150)
                     .padding(.all, 40)
 //                Spacer()
                 Text("Login")
@@ -137,7 +139,7 @@ struct LoginView: View {
                 Spacer()
                 HStack {
                     Text("New around here? ")
-                    NavigationLink(destination: SigninView(firstname: $firstname, lastname: $lastname, email: $email, picture: $picture, password: $password)) {
+                    NavigationLink(destination: SigninView(firstname: $firstname, lastname: $lastname, email: $email, picture: $picture, password: $password, mobile: $mobile, address: $address)) {
                         Text("Sign In")
                             .foregroundColor(Color.Dark)
                             .bold()

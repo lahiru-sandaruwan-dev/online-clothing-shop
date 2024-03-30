@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct NavigationBarView: View {
+    @State var firstname = ""
+    @State var lastname = ""
+    @State var email = ""
+    @State var picture = ""
+    @State var password = ""
+    @State var mobile = ""
+    @State var address = ""
     
     var body: some View {
         HStack {
@@ -46,7 +53,6 @@ struct NavigationBarView: View {
                     
                 }
                 
-//                SideCartViewTemp()
             } label: {
                 Image("shopping bag")
                     .resizable()
@@ -57,15 +63,37 @@ struct NavigationBarView: View {
                     .padding()
             }
             
+//            NavigationLink {
+//                if let userId = UserSession.shared.userId {
+//                    // Do something with userId
+//                    UserView(userId: userId)
+//                    
+//                } else {
+//                    
+//                }
+//            } label: {
+//                Image("User")
+//                    .resizable()
+//                    .padding(.all, 10)
+//                    .aspectRatio(contentMode: .fit)
+//                    .frame(width: 50, height: 50)
+//                    .background(Color.Line)
+//                    .padding()
+//            }
             
-//                                Spacer()
-            Image("User")
-                .resizable()
-                .padding(.all, 10)
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 50, height: 50)
-                .background(Color.Line)
-                .padding()
+            let userId = UserSession.shared.userId ?? ""
+            
+            NavigationLink(destination: UserView(firstname: $firstname, lastname: $lastname, email: $email, picture: $picture, password: $password, mobile: $mobile, address: $address, userId: userId)) {
+                Image("User")
+                    .resizable()
+                    .padding(.all, 10)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 50, height: 50)
+                    .background(Color.Line)
+                    .padding()
+            }
+
+            
                 
         }
     }

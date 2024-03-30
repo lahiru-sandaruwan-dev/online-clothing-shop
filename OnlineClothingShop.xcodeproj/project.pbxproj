@@ -45,6 +45,8 @@
 		E8BFCDB22BB07193003AA4C6 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFCDB12BB07193003AA4C6 /* UserViewModel.swift */; };
 		E8BFCDB42BB071A9003AA4C6 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFCDB32BB071A9003AA4C6 /* UserModel.swift */; };
 		E8BFCDB62BB07B1C003AA4C6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFCDB52BB07B1C003AA4C6 /* LoginViewModel.swift */; };
+		E8C969072BB82ACD00153E1A /* CheckoutViewNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C969062BB82ACD00153E1A /* CheckoutViewNew.swift */; };
+		E8C969092BB8438700153E1A /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C969082BB8438700153E1A /* UserView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +90,8 @@
 		E8BFCDB12BB07193003AA4C6 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		E8BFCDB32BB071A9003AA4C6 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		E8BFCDB52BB07B1C003AA4C6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		E8C969062BB82ACD00153E1A /* CheckoutViewNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewNew.swift; sourceTree = "<group>"; };
+		E8C969082BB8438700153E1A /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +227,8 @@
 				E89DF8102BAFBF0B007D752E /* LandingView.swift */,
 				E89DF8122BAFC967007D752E /* SigninView.swift */,
 				E8B931612BB7B72D0087511A /* CartView.swift */,
+				E8C969062BB82ACD00153E1A /* CheckoutViewNew.swift */,
+				E8C969082BB8438700153E1A /* UserView.swift */,
 			);
 			path = MainViews;
 			sourceTree = "<group>";
@@ -313,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8C969092BB8438700153E1A /* UserView.swift in Sources */,
 				E8B504492BAF168F00DB3E2B /* ProductsList.swift in Sources */,
 				E8B504532BAF16C200DB3E2B /* SideCartView.swift in Sources */,
 				E89DF8132BAFC967007D752E /* SigninView.swift in Sources */,
@@ -347,6 +354,7 @@
 				E829D7152BB7C7920071896B /* CartModel.swift in Sources */,
 				E8A051F72BAEAF370065C0A9 /* HeaderView.swift in Sources */,
 				E8B504502BAF16C200DB3E2B /* CartItemView.swift in Sources */,
+				E8C969072BB82ACD00153E1A /* CheckoutViewNew.swift in Sources */,
 				E8BFCDB22BB07193003AA4C6 /* UserViewModel.swift in Sources */,
 				E8B504552BAF174100DB3E2B /* CartItemModel.swift in Sources */,
 			);

@@ -21,6 +21,8 @@ struct UserPostModel: Codable{
     let picture: String
     let password: String
     let role: String
+    let mobile: String
+    let address: String
 }
 
 struct UserLoginDataModel: Codable {
@@ -36,4 +38,22 @@ struct UserLoginModel: Codable {
     let role: String
     let userId: String
     
+}
+
+struct UDataModel: Codable  {
+    let error: Bool?
+    let message: String?
+    let data: [UPostModel]
+}
+
+struct UPostModel: Hashable, Codable{
+    let _id: String
+    let firstName: String
+    let lastName: String
+    let email: String
+    let picture: String
+    let password: String
+    let role: String
+    let mobile: String
+    let address: String
 }

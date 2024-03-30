@@ -1,5 +1,5 @@
 //
-//  CartView.swift
+//  CheckoutViewNew.swift
 //  OnlineClothingShop
 //
 //  Created by Lahiru Sandaruwan on 2024-03-30.
@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-struct CartView: View {
+struct CheckoutViewNew: View {
     @StateObject var cartVM = CartViewModel()
+    @StateObject var userVM = UserViewModel()
     @State var presentSideMenu = false
     @State var presentSideCart = false
     var userId: String
@@ -23,7 +24,7 @@ struct CartView: View {
                     VStack(spacing: 0) {
                         Spacer()
                         HStack {
-                            Text("CART")
+                            Text("Check Out")
                                 .font(tenorSans(24))
                                 .foregroundColor(.black)
                                 .padding(.leading, 10)
@@ -31,18 +32,74 @@ struct CartView: View {
                         }
                         .onAppear {
                             cartVM.getCartByUserId(userId: userId)
+                            let userID = UserSession.shared.userId
+                            userVM.getUserById(userId: userId )
+                        }
+                        
+                        VStack{
+                            Text("Order Details")
+                                .font(tenorSans(24))
+//                                .padding()
+                            Image("Divider")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 400)
+//                                .padding(.top, 20)
+                            ForEach(userVM.userResult, id: \._id){ user in
+                                HStack{
+                                    VStack(alignment: .leading){
+                                        Text("Name")
+                                            .font(tenorSans(20))
+                                            .padding(2)
+                                        Text("Address")
+                                            .font(tenorSans(20))
+                                            .padding(2)
+                                        Text("E-mail")
+                                            .font(tenorSans(20))
+                                            .padding(2)
+                                        Text("Mobile")
+                                            .font(tenorSans(20))
+                                            .padding(2)
+                                    }
+                                    .padding()
+                                    VStack(alignment: .leading) {
+                                        Text(": \(user.firstName) \(user.lastName)")
+                                            .font(tenorSans(20))
+                                            .padding(2)
+                                        Text(": \(user.address)")
+                                            .font(tenorSans(20))
+                                            .padding(2)
+                                        Text(": \(user.email)")
+                                            .font(tenorSans(20))
+                                            .padding(2)
+                                        Text(": \(user.mobile)")
+                                            .font(tenorSans(20))
+                                            .padding(2)
+                                    }
+                                    
+                                }
+                                .frame(width: 340)
+                                .padding()
+                                .aspectRatio(contentMode: .fit)
+                                .background(Color.Dark.opacity(0.2))
+                                .cornerRadius(15)
+                                
+                            }
+                            
                         }
                         
                         ScrollView(.vertical, showsIndicators: false){
-                            LazyVStack(spacing: 20){
+                            LazyVStack(spacing: 0){
+                                
+                                
                                 
                                 ForEach(cartVM.productCartResult, id: \._id){ product in
                                     
-                                    HStack(spacing: 15) {
+                                    HStack(spacing: 20) {
                                         Image(product.productImage)
                                             .resizable()
                                             .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
-                                            .frame(width: 130, height: 130)
+                                            .frame(width: 100, height: 100)
                                             .cornerRadius(15)
                     
                                         VStack(alignment: .leading, spacing: 10) {
@@ -98,7 +155,7 @@ struct CartView: View {
                                         }
                                         .padding()
                                     }
-                                    .padding()
+                                    .padding(30)
                                     
                                 }
                             }
@@ -119,27 +176,18 @@ struct CartView: View {
                                     .foregroundColor(.black)
                             }
                             .padding([.top, .horizontal])
-                            let userId = UserSession.shared.userId
-                            NavigationLink(destination: CheckoutViewNew(userId: userId ?? "")) {
-                                Text("Check Out")
+                            
+                            Button(action : {
+                                
+                            }, label: {
+                                Text("Place Order")
                                     .font(tenorSans(20))
                                     .bold()
                                     .foregroundColor(.white)
                                     .frame(width: 300, height: 50)
                                     .background(Color.Dark.opacity(0.7))
                                     .cornerRadius(10)
-                            }
-//                            Button(action : {
-//                                
-//                            }, label: {
-//                                Text("Check Out")
-//                                    .font(tenorSans(20))
-//                                    .bold()
-//                                    .foregroundColor(.white)
-//                                    .frame(width: 300, height: 50)
-//                                    .background(Color.Dark.opacity(0.7))
-//                                    .cornerRadius(10)
-//                            })
+                            })
                            
                                 
                         }
@@ -202,8 +250,12 @@ struct CartView: View {
     
 }
 
-//struct CartView_Previews: PreviewProvider {
+//struct CheckOutView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        CartView(userId: "660675dd4c9b3ef89092f27e")
+//        CheckoutViewNew(userId: "660675dd4c9b3ef89092f27e")
 //    }
+//}
+
+//#Preview {
+//    CheckoutViewNew()
 //}

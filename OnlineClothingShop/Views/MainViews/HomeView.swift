@@ -53,7 +53,7 @@ struct HomeView: View {
                         NavigationBarView()
                        
                     }
-                    .padding(.top, 56)
+                    .padding(.top, 54)
                    
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -70,7 +70,6 @@ struct HomeView: View {
             }
             .navigationBarHidden(true)
         }
-        
     }
     
     @ViewBuilder
@@ -80,25 +79,35 @@ struct HomeView: View {
             ProductsList()
         } label: {
             ZStack {
-                Image("Hero")
+                Image("wp7915262-clothing-women-wallpapers")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(maxWidth: .infinity)
-                    .frame(height: 620)
+                    .frame(height: 600)
+                VStack {
+                    Text("Get Your Dream Cloths")
+                        .foregroundColor(.white)
+                        .bold()
+                        .font(.largeTitle)
+                    Text("Today")
+                        .foregroundColor(.white)
+                        .bold()
+                        .font(.largeTitle)
+                }
                 
                 
                 Button {
                     print("Explore Collection Button Clicked")
                 } label: {
-                    RoundedRectangle(cornerRadius: 30).overlay {
+                    RoundedRectangle(cornerRadius: 15).overlay {
                         Text("Explore Collection")
                             .font(Font.custom("Tenor Sans", size: 20))
                             .foregroundColor(.white)
                     }
                 }
                 .frame(width: 253, height: 40)
-                .tint(.black.opacity(0.4))
-                .offset(.init(width: 0, height: 250))
+                .tint(.white.opacity(0.4))
+                .offset(.init(width: 0, height: 150))
 
             }
         }
@@ -168,7 +177,7 @@ struct HomeView: View {
         NavigationLink {
             ProductsList()
         } label: {
-            Image("Collection 1")
+            Image("wp6130531-women-group-wallpapers")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(height: 244, alignment: .top)
@@ -179,7 +188,7 @@ struct HomeView: View {
         NavigationLink {
             ProductsList()
         } label: {
-            Image("Collection 2")
+            Image("wp6036446-the-women-in-the-black-wallpapers")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(height: 244, alignment: .top)

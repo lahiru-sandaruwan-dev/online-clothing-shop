@@ -30,10 +30,10 @@ struct HeaderView: View {
 //                    .frame(width: 84 , height: 84)
                 Spacer()
                 NavigationLink(destination: HomeView()) {
-                                   Image("Logo") // Assuming "Logo" is the name of your image asset in your asset catalog
+                                   Image("logo") // Assuming "Logo" is the name of your image asset in your asset catalog
                                        .resizable()
                                        .aspectRatio(contentMode: .fit)
-                                       .frame(width: 84, height: 84)
+                                       .frame(width: 84, height: 80)
                                }
                 
                 Spacer()
