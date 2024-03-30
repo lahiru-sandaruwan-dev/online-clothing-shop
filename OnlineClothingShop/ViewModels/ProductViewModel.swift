@@ -35,6 +35,47 @@ class ProductViewModel : ObservableObject{
             }
             task.resume()
         }
+    
+    func getById(productId: Any) {
+        guard let url = URL(string: "http://localhost:8000/api/v1/product/getProductById/\(productId)") else {
+            print("Invalid URL")
+            return
+        }
+
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                print("Error fetching data:", error)
+                return
+            }
+
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                print("Unexpected response:", response ?? "No response")
+                return
+            }
+
+            guard let data = data else {
+                print("No data received")
+                return
+            }
+
+            do {
+                let response = try JSONDecoder().decode(ProductDataModel.self, from: data)
+                DispatchQueue.main.async {
+                    self.productResult = response.data
+                    print(response.data)
+                }
+            } catch {
+                print("Error decoding JSON:", error)
+            }
+        }
+        task.resume()
+    }
+
+
+
+
+
+    
 }
     
 
