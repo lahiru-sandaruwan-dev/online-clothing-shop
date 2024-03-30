@@ -30,7 +30,7 @@ struct CartView: View {
                             Spacer()
                         }
                         .onAppear {
-                            cartVM.getCartByUserId(userId: "660675dd4c9b3ef89092f27e")
+                            cartVM.getCartByUserId(userId: userId)
                         }
                         
                         ScrollView(.vertical, showsIndicators: false){
@@ -85,7 +85,9 @@ struct CartView: View {
                                                 }
                                                 Spacer()
                                                 Button(action : {
-                                                    
+                                                    let userId = UserSession.shared.userId
+                                                    cartVM.deleteProductFromCart(productId: product._id)
+                                                    cartVM.getCartByUserId(userId: userId ?? "")
                                                 }, label : {
                                                     Image(systemName: "trash")
                                                         .font(.title3)
@@ -191,8 +193,8 @@ struct CartView: View {
     
 }
 
-struct CartView_Previews: PreviewProvider {
-    static var previews: some View {
-        CartView(userId: "660675dd4c9b3ef89092f27e")
-    }
-}
+//struct CartView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CartView(userId: "660675dd4c9b3ef89092f27e")
+//    }
+//}

@@ -32,5 +32,8 @@ struct UserLoginDataModel: Codable {
 struct UserLoginModel: Codable {
     let email: String?
     let password: String?
+    let token: String
+    let role: String
+    let userId: String
     
 }

@@ -16,7 +16,7 @@ struct OnlineClothingShopApp: App {
             LandingView()
                 .environmentObject(UserViewModel())
                 .environmentObject(LoginViewModel())
-//                .environmentObject(ProductViewModel())
+                .environmentObject(CartViewModel())
                 
         }
     }

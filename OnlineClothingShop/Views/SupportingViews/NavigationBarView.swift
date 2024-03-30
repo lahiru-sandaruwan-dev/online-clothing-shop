@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NavigationBarView: View {
+    
     var body: some View {
         HStack {
             NavigationLink{
@@ -36,7 +37,16 @@ struct NavigationBarView: View {
             }
             
             NavigationLink{
-                SideCartViewTemp()
+                
+                if let userId = UserSession.shared.userId {
+                    // Do something with userId
+                    CartView(userId: userId)
+                    
+                } else {
+                    
+                }
+                
+//                SideCartViewTemp()
             } label: {
                 Image("shopping bag")
                     .resizable()

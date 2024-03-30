@@ -41,13 +41,13 @@ struct HomeView: View {
                         .edgesIgnoringSafeArea(.all)
                         ScrollView(.vertical) {
                             HeroImageView()
-                            NewArrivalView()
+//                            NewArrivalView()
                             Image("Brand")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                             CollectionsView()
-                            TrendingHashtagsView()
-                            FooterView()
+//                            TrendingHashtagsView()
+//                            FooterView()
                             Spacer()
                         }
                         NavigationBarView()

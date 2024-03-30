@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     @EnvironmentObject var loginViewModel: LoginViewModel
+    @StateObject var cartVM = CartViewModel()
     @Binding var username: String
     @Binding var psw: String
     @State private var wrongUsername = 0
@@ -26,6 +27,7 @@ struct LoginView: View {
     @State var password = ""
    
     @State private var isHomeViewPresented = false
+    
     
     var body: some View {
         NavigationStack {
@@ -88,7 +90,11 @@ struct LoginView: View {
 //                                self.navigateToHomeView()
                                 self.isLoggedIn = true
                                 
-                                print("User Logged successfully: \(user)")
+                                print("User Logged successfully: \(user.data.userId)")
+                                
+                                UserSession.shared.userId = user.data.userId
+                                
+                                cartVM.getCartByUserId(userId: user.data.userId)
                                 
                             case .failure(let error):
                         
