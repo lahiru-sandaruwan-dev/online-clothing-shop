@@ -28,7 +28,7 @@
 		E8A1C49D2BB8D95C005CC2AE /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A1C49C2BB8D95C005CC2AE /* OrderModel.swift */; };
 		E8A1C49F2BB8DA64005CC2AE /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A1C49E2BB8DA64005CC2AE /* OrderViewModel.swift */; };
 		E8A1C4A12BB8FE49005CC2AE /* ProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A1C4A02BB8FE49005CC2AE /* ProductDetailsView.swift */; };
-		E8B504492BAF168F00DB3E2B /* ProductsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B504452BAF168F00DB3E2B /* ProductsList.swift */; };
+		E8A1C4A32BB90265005CC2AE /* ProductsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A1C4A22BB90264005CC2AE /* ProductsList.swift */; };
 		E8B504512BAF16C200DB3E2B /* SideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5044C2BAF16C200DB3E2B /* SideView.swift */; };
 		E8B504522BAF16C200DB3E2B /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5044D2BAF16C200DB3E2B /* FooterView.swift */; };
 		E8B504552BAF174100DB3E2B /* CartItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B504542BAF174100DB3E2B /* CartItemModel.swift */; };
@@ -67,7 +67,7 @@
 		E8A1C49C2BB8D95C005CC2AE /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
 		E8A1C49E2BB8DA64005CC2AE /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
 		E8A1C4A02BB8FE49005CC2AE /* ProductDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsView.swift; sourceTree = "<group>"; };
-		E8B504452BAF168F00DB3E2B /* ProductsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductsList.swift; path = "../../../../../Downloads/OpenFasionEcommerceSwiftUIApp-main/Open Fasion App/Views/MainViews/ProductsList.swift"; sourceTree = "<group>"; };
+		E8A1C4A22BB90264005CC2AE /* ProductsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsList.swift; sourceTree = "<group>"; };
 		E8B5044C2BAF16C200DB3E2B /* SideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SideView.swift; path = "../../../../../Downloads/OpenFasionEcommerceSwiftUIApp-main/Open Fasion App/Views/SupportingViews/SideView.swift"; sourceTree = "<group>"; };
 		E8B5044D2BAF16C200DB3E2B /* FooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FooterView.swift; path = "../../../../../Downloads/OpenFasionEcommerceSwiftUIApp-main/Open Fasion App/Views/SupportingViews/FooterView.swift"; sourceTree = "<group>"; };
 		E8B504542BAF174100DB3E2B /* CartItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemModel.swift; sourceTree = "<group>"; };
@@ -202,7 +202,6 @@
 		E8A051F32BAEA81C0065C0A9 /* MainViews */ = {
 			isa = PBXGroup;
 			children = (
-				E8B504452BAF168F00DB3E2B /* ProductsList.swift */,
 				E8A051F42BAEA8460065C0A9 /* HomeView.swift */,
 				E89DF80E2BAFB9C9007D752E /* LoginView.swift */,
 				E89DF8102BAFBF0B007D752E /* LandingView.swift */,
@@ -211,6 +210,7 @@
 				E8C969062BB82ACD00153E1A /* CheckoutViewNew.swift */,
 				E8C969082BB8438700153E1A /* UserView.swift */,
 				E8A1C4A02BB8FE49005CC2AE /* ProductDetailsView.swift */,
+				E8A1C4A22BB90264005CC2AE /* ProductsList.swift */,
 			);
 			path = MainViews;
 			sourceTree = "<group>";
@@ -302,7 +302,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8C969092BB8438700153E1A /* UserView.swift in Sources */,
-				E8B504492BAF168F00DB3E2B /* ProductsList.swift in Sources */,
 				E89DF8132BAFC967007D752E /* SigninView.swift in Sources */,
 				E8A052032BAEE7850065C0A9 /* ProductItemView.swift in Sources */,
 				E8A051ED2BAEA7810065C0A9 /* typealiases.swift in Sources */,
@@ -324,6 +323,7 @@
 				E8A051FF2BAEDDB50065C0A9 /* ProductModel.swift in Sources */,
 				E8A051D42BAE83620065C0A9 /* OnlineClothingShopApp.swift in Sources */,
 				E8B504522BAF16C200DB3E2B /* FooterView.swift in Sources */,
+				E8A1C4A32BB90265005CC2AE /* ProductsList.swift in Sources */,
 				E8A051FD2BAEDB350065C0A9 /* Color+Extensions.swift in Sources */,
 				E8BFCDB62BB07B1C003AA4C6 /* LoginViewModel.swift in Sources */,
 				E8BFCDB42BB071A9003AA4C6 /* UserModel.swift in Sources */,
