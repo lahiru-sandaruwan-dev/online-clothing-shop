@@ -30,7 +30,7 @@ struct NavigationBarView: View {
                     .padding()
             }
                 
-//                                Spacer()
+
             NavigationLink{
                 ProductsList()
             } label: {
@@ -46,7 +46,7 @@ struct NavigationBarView: View {
             NavigationLink{
                 
                 if let userId = UserSession.shared.userId {
-                    // Do something with userId
+        
                     CartView(userId: userId)
                     
                 } else {
@@ -62,24 +62,6 @@ struct NavigationBarView: View {
                     .background(Color.Line)
                     .padding()
             }
-            
-//            NavigationLink {
-//                if let userId = UserSession.shared.userId {
-//                    // Do something with userId
-//                    UserView(userId: userId)
-//                    
-//                } else {
-//                    
-//                }
-//            } label: {
-//                Image("User")
-//                    .resizable()
-//                    .padding(.all, 10)
-//                    .aspectRatio(contentMode: .fit)
-//                    .frame(width: 50, height: 50)
-//                    .background(Color.Line)
-//                    .padding()
-//            }
             
             let userId = UserSession.shared.userId ?? ""
             

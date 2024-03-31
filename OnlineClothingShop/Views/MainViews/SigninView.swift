@@ -88,11 +88,11 @@ struct SigninView: View {
                         return Alert(title: firstname, message: message)
                     })
                     .alert(isPresented: $showAlert) {
-                        Alert(title: Text("User Creation"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                        Alert(title: Text("Alert"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
                     }
                 
                 Button(action: {
-                    if firstname != "" && lastname != "" && email != "" && password != "" {
+                    if firstname != "" && lastname != "" && mobile != "" && address != "" && email != "" && password != "" {
                         ///                   var password = "password"
                         userViewModel.createUser(firstname: firstname, lastname: lastname, email: email, picture: "", password: password, role: "user", mobile: mobile, address: address) { result in
                             switch result {
@@ -118,6 +118,8 @@ struct SigninView: View {
                         }
                     } else {
                         isAleart.toggle()
+                        self.alertMessage = "Fill All Fields!"
+                        self.showAlert = true
                     }
                     
                     
@@ -148,9 +150,12 @@ struct SigninView: View {
                             .bold()
                     }
                 }
+                Spacer()
             }
             
         }
+        .navigationBarHidden(true)
+        .edgesIgnoringSafeArea(.all)
     }
 }
 

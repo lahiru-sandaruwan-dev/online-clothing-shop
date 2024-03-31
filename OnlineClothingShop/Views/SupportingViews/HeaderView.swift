@@ -14,39 +14,15 @@ struct HeaderView: View {
     var body: some View {
         ZStack{
             HStack{
-//                Button {
-//                    menuAction()
-//                }label: {
-//                    Image("Menu")
-//                        .resizable()
-//                        .aspectRatio(contentMode: .fit)
-//                }
-//                .frame(width: 24 , height: 24)
-//                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-                
-//                Image("Logo")
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fit)
-//                    .frame(width: 84 , height: 84)
                 Spacer()
                 NavigationLink(destination: HomeView()) {
-                                   Image("logo") // Assuming "Logo" is the name of your image asset in your asset catalog
+                                   Image("logo")
                                        .resizable()
                                        .aspectRatio(contentMode: .fit)
                                        .frame(width: 84, height: 80)
                                }
                 
                 Spacer()
-                
-//                Button {
-//                    cartAction()
-//                }label: {
-//                    Image("shopping bag")
-//                        .resizable()
-//                        .aspectRatio(contentMode: .fit)
-//                }
-//                .frame(width: 24 , height: 24)
-//                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .trailing)
                 
             }
         }

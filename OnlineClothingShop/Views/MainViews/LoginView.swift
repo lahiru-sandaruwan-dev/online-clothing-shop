@@ -58,27 +58,16 @@ struct LoginView: View {
                     .cornerRadius(10)
                     .border(Color.Dark.opacity(0.8), width: 300)
                 
-//                Button("Login") {
-//                    authenticateUser(username: username, password: password)
-//                }
-//                .font(tenorSans(20))
-//                .bold()
-//                .foregroundColor(.white)
-//                .frame(width: 300, height: 50)
-//                .background(Color.Dark.opacity(0.7))
-//                .cornerRadius(10)
+
                     .alert(isPresented: $isAleart, content: {
                         let firstname = Text("No data")
                         let message = Text("Please fill all fields!")
                         return Alert(title: firstname, message: message)
                     })
                     .alert(isPresented: $showAlert) {
-                        Alert(title: Text("User Creation"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                        Alert(title: Text("Alert"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
                     }
-//                    .sheet(isPresented: $isHomeViewPresented) {
-//                        HomeView()
-//                    }
-//                
+                
                 Button(action: {
                     if username != "" && psw != "" {
                         loginViewModel.login(email: username, password: psw) { result in
@@ -107,6 +96,8 @@ struct LoginView: View {
                         }
                     } else {
                         isAleart.toggle()
+                        self.alertMessage = "Fill User Name and Password!"
+                        self.showAlert = true
                     }
 
                 }, label : {
@@ -173,9 +164,6 @@ struct LoginView: View {
     }
     
     func navigateToHomeView() {
-        // Push HomeView onto the navigation stack
-        // Example assuming you're using NavigationView
-//        self.presentationMode.wrappedValue.dismiss()
         self.isHomeViewPresented = true
     }
     

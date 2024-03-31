@@ -129,17 +129,6 @@ struct CartView: View {
                                     .background(Color.Dark.opacity(0.7))
                                     .cornerRadius(10)
                             }
-//                            Button(action : {
-//                                
-//                            }, label: {
-//                                Text("Check Out")
-//                                    .font(tenorSans(20))
-//                                    .bold()
-//                                    .foregroundColor(.white)
-//                                    .frame(width: 300, height: 50)
-//                                    .background(Color.Dark.opacity(0.7))
-//                                    .cornerRadius(10)
-//                            })
                            
                                 
                         }
@@ -159,8 +148,8 @@ struct CartView: View {
                     }
                 }
                 
-                SideMenu()
-                SideCart()
+//                SideMenu()
+//                SideCart()
             }
             .navigationBarHidden(true)
         }
@@ -188,18 +177,7 @@ struct CartView: View {
         
         return getPrice(value: price)
     }
-    
-    
-    @ViewBuilder
-    private func SideMenu() -> some View {
-        SideView(isShowing: $presentSideMenu, content: AnyView(SideMenuViewContents(presentSideMenu: $presentSideMenu)), direction: .leading)
-    }
-    
-    @ViewBuilder
-    private func SideCart() -> some View {
-        SideView(isShowing: $presentSideCart, content: AnyView(SideCartViewContents(presentSideMenu: $presentSideCart)), direction: .trailing)
-    }
-    
+      
 }
 
 //struct CartView_Previews: PreviewProvider {

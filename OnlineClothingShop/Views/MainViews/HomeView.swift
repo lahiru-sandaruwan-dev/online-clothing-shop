@@ -47,7 +47,7 @@ struct HomeView: View {
                                 .aspectRatio(contentMode: .fit)
                             CollectionsView()
 //                            TrendingHashtagsView()
-//                            FooterView()
+                            FooterView()
                             Spacer()
                         }
                         NavigationBarView()
@@ -65,8 +65,8 @@ struct HomeView: View {
                     }
                 }
                 
-                SideMenu()
-                SideCart()
+//                SideMenu()
+//                SideCart()
             }
             .navigationBarHidden(true)
         }
@@ -129,42 +129,6 @@ struct HomeView: View {
             .frame(width: 140)
             .padding(.top, 10)
         
-        VStack {
-            HStack(spacing: 20) {
-                ForEach(0..<categories.count, id: \.self) { i in
-                    CategoryView(isSelected: i == selectedCategory, title: categories[i])
-                        .onTapGesture {
-                            selectedCategory = i
-                        }
-                }
-            }
-            .frame(maxWidth: .infinity)
-            
-//            HStack {
-//                ProductItemView(product: product1)
-//                ProductItemView(product: product2)
-//            }
-//            HStack {
-//                ProductItemView(product: product3)
-//                ProductItemView(product: product4)
-//            }
-            
-            Button {
-                
-            } label: {
-                HStack(alignment: .center, spacing: 8) {
-                    Text("Explore More")
-                        .font(tenorSans(20))
-                        .multilineTextAlignment(.center)
-                        
-                    Image(systemName: "arrow.forward")
-                        .frame(width: 18, height: 18)
-                }
-            }
-            .tint(Color.BodyGrey)
-            .padding(12)
-        }
-        
     }
     
     
@@ -202,16 +166,7 @@ struct HomeView: View {
             .padding(.top, 10)
         
     }
-    
-    @ViewBuilder
-    private func SideMenu() -> some View {
-        SideView(isShowing: $presentSideMenu, content: AnyView(SideMenuViewContents(presentSideMenu: $presentSideMenu)), direction: .leading)
-    }
-    
-    @ViewBuilder
-    private func SideCart() -> some View {
-        SideView(isShowing: $presentSideCart, content: AnyView(SideCartViewContents(presentSideMenu: $presentSideCart)), direction: .trailing)
-    }
+ 
 }
 
 struct HomeView_Previews: PreviewProvider {

@@ -246,6 +246,16 @@ struct UserView: View {
                         }
                         //                        }
                         
+                        NavigationLink(destination: LandingView()) {
+                            Text("Sign Out")
+                                .font(tenorSans(20))
+                                .bold()
+                                .foregroundColor(.white)
+                                .frame(width: 200, height: 45)
+                                .background(Color.red.opacity(0.7))
+                                .cornerRadius(10)
+                        }
+                        
                         
                         
                         .padding(10)
@@ -263,9 +273,9 @@ struct UserView: View {
                         presentSideCart.toggle()
                     }
                 }
-                
-                SideMenu()
-                SideCart()
+//                
+//                SideMenu()
+//                SideCart()
             }
             .navigationBarHidden(true)
         }
@@ -278,15 +288,15 @@ struct UserView: View {
     }
     
     
-    @ViewBuilder
-    private func SideMenu() -> some View {
-        SideView(isShowing: $presentSideMenu, content: AnyView(SideMenuViewContents(presentSideMenu: $presentSideMenu)), direction: .leading)
-    }
-    
-    @ViewBuilder
-    private func SideCart() -> some View {
-        SideView(isShowing: $presentSideCart, content: AnyView(SideCartViewContents(presentSideMenu: $presentSideCart)), direction: .trailing)
-    }
+//    @ViewBuilder
+//    private func SideMenu() -> some View {
+//        SideView(isShowing: $presentSideMenu, content: AnyView(SideMenuViewContents(presentSideMenu: $presentSideMenu)), direction: .leading)
+//    }
+//    
+//    @ViewBuilder
+//    private func SideCart() -> some View {
+//        SideView(isShowing: $presentSideCart, content: AnyView(SideCartViewContents(presentSideMenu: $presentSideCart)), direction: .trailing)
+//    }
     
 }
 

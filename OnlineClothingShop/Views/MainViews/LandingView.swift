@@ -65,7 +65,9 @@ struct LandingView: View {
                         }
                     }
                 }
+                .edgesIgnoringSafeArea(.all)
                 .padding()
+                .navigationBarHidden(true)
             }
         }
         

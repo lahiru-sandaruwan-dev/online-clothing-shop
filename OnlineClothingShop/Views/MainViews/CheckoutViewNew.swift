@@ -10,8 +10,13 @@ import SwiftUI
 struct CheckoutViewNew: View {
     @StateObject var cartVM = CartViewModel()
     @StateObject var userVM = UserViewModel()
+    @StateObject var orderVM = OrderViewModel()
+    
     @State var presentSideMenu = false
     @State var presentSideCart = false
+    @State var isAleart = false
+    @State private var showAlert: Bool = false
+    @State private var alertMessage: String = ""
     var userId: String
     
     //    private let adaptiveColumns = [GridItem(.adaptive(minimum: 150))]
@@ -39,12 +44,12 @@ struct CheckoutViewNew: View {
                         VStack{
                             Text("Order Details")
                                 .font(tenorSans(24))
-//                                .padding()
+                            //                                .padding()
                             Image("Divider")
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 400)
-//                                .padding(.top, 20)
+                            //                                .padding(.top, 20)
                             ForEach(userVM.userResult, id: \._id){ user in
                                 HStack{
                                     VStack(alignment: .leading){
@@ -101,7 +106,7 @@ struct CheckoutViewNew: View {
                                             .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
                                             .frame(width: 100, height: 100)
                                             .cornerRadius(15)
-                    
+                                        
                                         VStack(alignment: .leading, spacing: 10) {
                                             Text(product.productName)
                                                 .fontWeight(.semibold)
@@ -111,7 +116,7 @@ struct CheckoutViewNew: View {
                                                 Text(getPrice(value: Float(product.productPrice)))
                                                     .font(.title2)
                                                     .fontWeight(.heavy)
-                                                .foregroundColor(.black)
+                                                    .foregroundColor(.black)
                                                 
                                                 Spacer(minLength: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/)
                                                 
@@ -125,14 +130,14 @@ struct CheckoutViewNew: View {
                                                         .font(.system(size: 16, weight: .heavy))
                                                         .foregroundColor(.black)
                                                 }
-
+                                                
                                                 Text("\(cartVM.productCartResult[getIndex(product: product)].requestedQuantity)")
                                                     .fontWeight(.heavy)
                                                     .foregroundColor(.black)
                                                     .padding(.vertical, 5)
                                                     .padding(.horizontal, 10)
                                                     .background(Color.black.opacity(0.06))
-
+                                                
                                                 Button(action : {
                                                     cartVM.productCartResult[getIndex(product: product)].requestedQuantity += 1
                                                 }) {
@@ -161,7 +166,7 @@ struct CheckoutViewNew: View {
                             }
                             .background(Color.gray.opacity(0.1))
                             
-                          
+                            
                             .padding(.top, 20)
                         }
                         VStack {
@@ -177,19 +182,65 @@ struct CheckoutViewNew: View {
                             }
                             .padding([.top, .horizontal])
                             
-                            Button(action : {
-                                
-                            }, label: {
-                                Text("Place Order")
-                                    .font(tenorSans(20))
-                                    .bold()
-                                    .foregroundColor(.white)
-                                    .frame(width: 300, height: 50)
-                                    .background(Color.Dark.opacity(0.7))
-                                    .cornerRadius(10)
+                            .alert(isPresented: $isAleart, content: {
+                                let firstname = Text("No data")
+                                let message = Text("Please fill all fields!")
+                                return Alert(title: firstname, message: message)
                             })
-                           
+                            .alert(isPresented: $showAlert) {
+                                Alert(title: Text("Alert"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                            }
+                            
+                            ForEach(userVM.userResult, id:\.self){ user in
                                 
+                                Button(action : {
+                                    if let userId = UserSession.shared.userId {
+                                                var itemDetails = [ItemDetails]() 
+                                                
+                                                for product in cartVM.productCartResult {
+                                                    // Append each product's details to itemDetails
+                                                    itemDetails.append(ItemDetails(
+                                                        itemName: product.productName,
+                                                        itemQuantity: product.requestedQuantity,
+                                                        itemPrice: product.productPrice
+                                                    ))
+                                                }
+                                                
+                                                orderVM.createOrder(
+                                                    customerName: user.firstName,
+                                                    address: user.address,
+                                                    mobile: user.mobile,
+                                                    email: user.email,
+                                                    itemDetails: itemDetails
+                                                ) { result in
+                                                    switch result {
+                                                    case .success(let order):
+                                                        // Handle success response
+                                                        self.alertMessage = "Order created successfully"
+                                                        self.showAlert = true
+                                                        print("Order created successfully: \(order)")
+                                                        
+                                                    case .failure(let error):
+                                                        // Handle failure response
+                                                        self.alertMessage = "Failed to create order: \(error.localizedDescription)"
+                                                        self.showAlert = true
+                                                        print("Error creating order: \(error)")
+                                                    }
+                                                }
+                                            } else {
+                                               
+                                            }
+                                }, label: {
+                                    Text("Place Order")
+                                        .font(tenorSans(20))
+                                        .bold()
+                                        .foregroundColor(.white)
+                                        .frame(width: 300, height: 50)
+                                        .background(Color.Dark.opacity(0.7))
+                                        .cornerRadius(10)
+                                })
+                            }
+                            
                         }
                         .padding(10)
                         
@@ -207,8 +258,8 @@ struct CheckoutViewNew: View {
                     }
                 }
                 
-                SideMenu()
-                SideCart()
+                //                SideMenu()
+                //                SideCart()
             }
             .navigationBarHidden(true)
         }
@@ -238,15 +289,15 @@ struct CheckoutViewNew: View {
     }
     
     
-    @ViewBuilder
-    private func SideMenu() -> some View {
-        SideView(isShowing: $presentSideMenu, content: AnyView(SideMenuViewContents(presentSideMenu: $presentSideMenu)), direction: .leading)
-    }
-    
-    @ViewBuilder
-    private func SideCart() -> some View {
-        SideView(isShowing: $presentSideCart, content: AnyView(SideCartViewContents(presentSideMenu: $presentSideCart)), direction: .trailing)
-    }
+    //    @ViewBuilder
+    //    private func SideMenu() -> some View {
+    //        SideView(isShowing: $presentSideMenu, content: AnyView(SideMenuViewContents(presentSideMenu: $presentSideMenu)), direction: .leading)
+    //    }
+    //
+    //    @ViewBuilder
+    //    private func SideCart() -> some View {
+    //        SideView(isShowing: $presentSideCart, content: AnyView(SideCartViewContents(presentSideMenu: $presentSideCart)), direction: .trailing)
+    //    }
     
 }
 

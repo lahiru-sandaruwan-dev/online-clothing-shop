@@ -2,7 +2,7 @@
 //  CartModel.swift
 //  OnlineClothingShop
 //
-//  Created by Akindu Bogahawatta on 2024-03-30.
+//  Created by Lahiru Sandaruwan on 2024-03-30.
 //
 
 import Foundation
